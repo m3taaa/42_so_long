@@ -1,15 +1,10 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include <string.h>
-#include "libft/libft.h"
-
+#include "so_long.h"
 
 int	check_type_file(char *file)
 {
 	char *end_file;
 	int	x;
-	end_file = ft_substr(file, (strlen(file)-4), 4);
+	end_file = ft_substr(file, (ft_strlen(file)-4), 4);
 	x = ft_strncmp(end_file, ".ber", ft_strlen(end_file));
 	if (x != 0)
 		return (-1);
@@ -24,13 +19,13 @@ int check_file(char *path_file)
 	fd = open(path_file, O_RDONLY);
 	if (fd == -1)
 	{
-		printf("find not file\n");
+		ft_printf("find not file\n");
 		return (fd);
 	}
 	check_file_extension = check_type_file(path_file);
 	if (check_file_extension == -1)
 	{
-		printf("not good extension\n");
+		ft_printf("not good extension\n");
 		return (-1);
 	}
 	return (fd);
@@ -42,15 +37,15 @@ int main(int ac, char **av)
 	if (ac != 2)
 	{
 		if (ac < 2)
-			printf("Veuillez ajouter en argument une map\n");
+			ft_printf("Veuillez ajouter en argument une map\n");
 		else
-			printf("error\n");
+			ft_printf("error\n");
 		return (0);
 	}
-	printf("ok\n");
+	ft_printf("ok\n");
 	fd = check_file(av[1]);
 	if (fd == -1)
 		return (0);
-	printf("%d\n", fd);
+	ft_printf("%d\n", fd);
 	return (0);
 }
