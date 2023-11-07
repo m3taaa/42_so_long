@@ -19,7 +19,7 @@ int		check_content_file(int fd)
 	char *line;
 	int 	return_line;
 
-	while (line = get_next_line(fd))
+	while ((line = get_next_line(fd)))
 	{
 		return_line = check_line(line);
 		if (return_line == 1)

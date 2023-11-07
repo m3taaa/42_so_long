@@ -1,5 +1,17 @@
 #include "../header/so_long.h"
 
+void	simple_window()
+{
+	void	*ptr_mlx;
+	void	*ptr_window;
+
+	ptr_mlx = mlx_init();
+	ptr_window = mlx_new_window(ptr_mlx, 500, 500, "test");
+	ft_printf("%p\n",ptr_window);
+	mlx_loop(ptr_mlx);
+	return ;
+}
+
 int main(int ac, char **av)
 {
 	int fd;
@@ -12,7 +24,6 @@ int main(int ac, char **av)
 			ft_printf("error\n");
 		return (0);
 	}
-	ft_printf("ok\n");
 	fd = check_file(av[1]);
 	if (fd == -1)
 		return (0);
@@ -22,5 +33,6 @@ int main(int ac, char **av)
 		ft_printf("Map incorect\n");
 		return (0);
 	}
+	simple_window();
 	return (0);
 }
