@@ -3,6 +3,7 @@
 int main(int ac, char **av)
 {
 	int fd;
+	int return_check_content;
 	if (ac != 2)
 	{
 		if (ac < 2)
@@ -15,12 +16,11 @@ int main(int ac, char **av)
 	fd = check_file(av[1]);
 	if (fd == -1)
 		return (0);
-	int x = check_content_file(fd);
-	if (x == 1)
+	return_check_content = check_content_file(fd);
+	if (return_check_content == 1)
 	{
 		ft_printf("Map incorect\n");
 		return (0);
 	}
-	ft_printf("return check_content_file %d\n",x);
 	return (0);
 }

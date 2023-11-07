@@ -1,36 +1,30 @@
 #include "../header/so_long.h"
 
-static int	check_line(char *str)
+int		check_line(char *line)
 {
 	int x;
 
 	x = 0;
-	while (str[x])
+	while (line[x] != '\n')
 	{
-		if (str[x] != '0' || str[x] != '1' || str[x] != 'C' || str[x] != 'E' || str[x] != 'P')
+		if (line[x] != '0' && line[x] != '1' && line[x] != 'C' && line[x] != 'E' && line[x] != 'P')
 			return (1);
-		x++;	
+		x++;
 	}
 	return (0);
 }
+
 int		check_content_file(int fd)
 {
 	char *line;
-	int		i;
 	int 	return_line;
 
-	i = 1;
-	while (1)
+	while (line = get_next_line(fd))
 	{
-		line = get_next_line(fd);
 		return_line = check_line(line);
 		if (return_line == 1)
 			return (1);
-		ft_printf("%d. %s\n",i, line);
-		if (line == NULL)
-			break;
 		free(line);
-		i++;
 	}
 	return (0);
 }
