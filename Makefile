@@ -24,7 +24,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 		@make -C libft/ > /dev/null 2>&1
 		@make -C mlx/ > /dev/null 2>&1
-		@$(CC) $(OBJS) $(INCLUDES) $(MLXFLAGS_MAC) -o $(NAME) -fsanitize=address -g3
+		@$(CC) $(OBJS) $(INCLUDES) $(MLXFLAGS_MAC) -o $(NAME)
 		@echo "create so_long"
 
 clean:
