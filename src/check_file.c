@@ -6,7 +6,7 @@
 /*   By: mmeerber <mmeerber@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:12:58 by mmeerber          #+#    #+#             */
-/*   Updated: 2023/12/19 19:43:42 by mmeerber         ###   ########.fr       */
+/*   Updated: 2023/12/21 14:57:10 by mmeerber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,9 @@ for create_map :
 		tab[2] = y
 */
 
-static void	create_map(int fd, t_map *map, char *path_file)
+static void	create_map(int fd, t_map *map, char *path_file, char *line)
 {
 	int		tab_int[3];
-	char	*line;
 
 	map->size_y = get_size_file(path_file);
 	map->tab = malloc(sizeof(char *) * (map->size_y) + 1);
@@ -98,9 +97,11 @@ static void	get_x(t_map *map)
 t_map	check_file(char *path_file)
 {
 	t_map	map;
+	char	*line;
 	int		verif;
 	int		fd;
 
+	line = NULL;
 	init_map(&map);
 	fd = open(path_file, O_RDONLY);
 	if (fd == -1)
@@ -108,7 +109,7 @@ t_map	check_file(char *path_file)
 	verif = check_extension(path_file);
 	if (verif == 1)
 		error("not good extension\n", &map);
-	create_map(fd, &map, path_file);
+	create_map(fd, &map, path_file, line);
 	close(fd);
 	get_x(&map);
 	return (map);
