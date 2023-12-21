@@ -6,7 +6,7 @@
 /*   By: mmeerber <mmeerber@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:52:57 by mmeerber          #+#    #+#             */
-/*   Updated: 2023/12/21 14:49:01 by mmeerber         ###   ########.fr       */
+/*   Updated: 2023/12/21 19:48:50 by mmeerber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ int	check_path(t_game game)
 				game_temp->map.tab[tab_int[0]][tab_int[1]] = 'C';
 			if (game_temp->map.tab[tab_int[0]][tab_int[1]] == 'e')
 				game_temp->map.tab[tab_int[0]][tab_int[1]] = 'E';
+			if (game_temp->map.tab[tab_int[0]][tab_int[1]] == 'X')
+				game_temp->map.tab[tab_int[0]][tab_int[1]] = '0';
 			tab_int[1]++;
 		}
 		tab_int[0]++;

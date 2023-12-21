@@ -6,7 +6,7 @@
 /*   By: mmeerber <mmeerber@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:53:07 by mmeerber          #+#    #+#             */
-/*   Updated: 2023/12/16 16:32:52 by mmeerber         ###   ########.fr       */
+/*   Updated: 2023/12/21 19:58:49 by mmeerber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	down(t_game *game, t_map *map, int x, int y)
 {
 	if (game->exit == 1)
 	{
+		if (map->tab[x][y + 1] == 'C')
+			game->items++;
 		map->tab[x + 1][y] = 'P';
 		map->tab[x][y] = 'E';
 		game->exit = -1;
@@ -37,13 +39,14 @@ void	down(t_game *game, t_map *map, int x, int y)
 	}
 	map->tab[x + 1][y] = 'P';
 	map->tab[x][y] = '0';
-	return ;
 }
 
 void	up(t_game *game, t_map *map, int x, int y)
 {
 	if (game->exit == 1)
 	{
+		if (map->tab[x][y + 1] == 'C')
+			game->items++;
 		map->tab[x - 1][y] = 'P';
 		map->tab[x][y] = 'E';
 		game->exit = -1;
@@ -61,16 +64,18 @@ void	up(t_game *game, t_map *map, int x, int y)
 		map->tab[x - 1][y] = 'P';
 		map->tab[x][y] = '0';
 		game->exit = 1;
+		return ;
 	}
 	map->tab[x - 1][y] = 'P';
 	map->tab[x][y] = '0';
-	return ;
 }
 
 void	left(t_game *game, t_map *map, int x, int y)
 {
 	if (game->exit == 1)
 	{
+		if (map->tab[x][y + 1] == 'C')
+			game->items++;
 		map->tab[x][y - 1] = 'P';
 		map->tab[x][y] = 'E';
 		game->exit = -1;
@@ -88,16 +93,18 @@ void	left(t_game *game, t_map *map, int x, int y)
 		map->tab[x][y - 1] = 'P';
 		map->tab[x][y] = '0';
 		game->exit = 1;
+		return ;
 	}
 	map->tab[x][y - 1] = 'P';
 	map->tab[x][y] = '0';
-	return ;
 }
 
 void	right(t_game *game, t_map *map, int x, int y)
 {
 	if (game->exit == 1)
 	{
+		if (map->tab[x][y + 1] == 'C')
+			game->items++;
 		map->tab[x][y + 1] = 'P';
 		map->tab[x][y] = 'E';
 		game->exit = -1;
@@ -115,8 +122,8 @@ void	right(t_game *game, t_map *map, int x, int y)
 		map->tab[x][y + 1] = 'P';
 		map->tab[x][y] = '0';
 		game->exit = 1;
+		return ;
 	}
 	map->tab[x][y + 1] = 'P';
 	map->tab[x][y] = '0';
-	return ;
 }
