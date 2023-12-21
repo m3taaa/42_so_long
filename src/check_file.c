@@ -6,7 +6,7 @@
 /*   By: mmeerber <mmeerber@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:12:58 by mmeerber          #+#    #+#             */
-/*   Updated: 2023/12/21 14:57:10 by mmeerber         ###   ########.fr       */
+/*   Updated: 2023/12/21 15:32:51 by mmeerber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ static int	get_size_file(char *path_file)
 		free(line);
 		line = get_next_line(fd);
 	}
-	if (x < 3 || x > 500)
+	if (x < 2)
 		error("map invalid\n", NULL);
+	if (x > 22)
+		error("map to big\n", NULL);
 	return (x);
 }
 

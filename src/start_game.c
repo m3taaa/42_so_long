@@ -6,7 +6,7 @@
 /*   By: mmeerber <mmeerber@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:40:53 by mmeerber          #+#    #+#             */
-/*   Updated: 2023/12/19 20:03:14 by mmeerber         ###   ########.fr       */
+/*   Updated: 2023/12/21 15:25:41 by mmeerber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,8 @@ void	start_game(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		error("Error mlx\n", &game->map);
-	if (game->map.size_y > 50 || game->map.size_x > 50)
-		error("map is too big\n", &game->map);
+	if (game->map.size_x > 40)
+		error("map to large\n", &game->map);
 	game->window = mlx_new_window \
 	(game->mlx, (game->map.size_x * 64), (game->map.size_y * 64), "so_long");
 	if (!game->window)
